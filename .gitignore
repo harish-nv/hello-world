@@ -1,0 +1,13 @@
+.classpath
+.cache
+.DS_Store
+*.im?
+target
+work
+bin/
+
+# Various IDEs
+.project
+.idea/
+*.tmproj
+.vscode/

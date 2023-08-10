@@ -1,0 +1,60 @@
+{
+  "id": "default0",
+  "version": "1_0",
+  "name": "My Default bundle",
+  "comment": "My system's default bundle",
+  "mappings": [
+    {
+      "id": "mapping1",
+      "name": "default", 
+      "registry": "*",
+      "repository": "*",
+      "image": { "type": "tag", "value": "*" },
+      "policy_id": "policy1",
+      "whitelist_ids": [ "allowlist1" ]
+    }
+  ],
+  "whitelisted_images": [],
+  "blacklisted_images": [],
+  "whitelists": [
+    {
+      "id": "allowlist1",
+      "name": "Simple Allowlist",
+      "version": "1_0",
+      "items": [
+        { "id": "item1", "gate": "vulnerabilities", "trigger": "package", "trigger_id": "CVE-2022-32221+*" },
+        { "id": "item2", "gate": "vulnerabilities", "trigger": "package", "trigger_id": "CVE-2023-23914+*" },
+        { "id": "item3", "gate": "vulnerabilities", "trigger": "package", "trigger_id": "CVE-2022-37434+*" }
+      ]
+    },
+    {
+      "id": "allowlist2",
+      "name": "Simple Allowlist",
+      "version": "1_0",
+      "items": [
+        { "id": "item1", "gate": "vulnerabilities", "trigger": "package", "trigger_id": "CVE-1111+*" }
+      ]
+    }
+  ],
+  "policies": [
+    {
+      "name": "DefaultPolicy",
+      "version": "1_0",
+      "comment": "Policy for basic checks",
+      "id": "policy1",
+      "rules": [
+        {
+          "action": "GO",
+          "gate": "vulnerabilities",
+          "trigger": "package",
+          "id": "rule1",
+          "params": [
+            { "name": "package_type", "value": "all" },
+            { "name": "severity_comparison", "value": ">=" },
+            { "name": "severity", "value": "medium" }
+          ]
+        }
+      ]
+    }
+  ]
+}

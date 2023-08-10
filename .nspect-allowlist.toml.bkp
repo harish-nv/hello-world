@@ -1,0 +1,23 @@
+version = "1.0.0"
+[oss]
+ 
+# if you are not adding [[oss.allowlist]] then please remove this complete tag from file or keep it commented
+[[oss.allowlist]]
+# *Required field (cve-id)*
+cve-id = "BDSA-2022-3383"
+# *Required field (package)*
+package = "golang/text"
+# *Required field (package)* NOTE: this is mandatory and must match version string(s) found in report exactly for filtering to work
+versions = ["v0.3.7"]
+# *Required field (nvbug/jira)* either nvbug or jira required
+jira = "NGCDEVOPS-10498"
+ 
+# if you are not adding [[pulse-trufflehog.files]] then please remove this complete tag from file or keep it commented
+[[pulse-trufflehog.files]]
+# Copy the file path from the result after running local Pulse-Trufflehog or from the email which was sent by svcsectool
+file = "config.json"
+ 
+  # When adding the credential type and specific masked/redacted secret, add them as exactly seen in the result (if you are running local Pulse-Trufflehog then for NVIDIARaptor detector type you need to use "ExtraData > Key Type" as the credential type)
+  [[pulse-trufflehog.files.secrets]]   
+  type = "Password"
+  values = [ "pas*****************la1\""]
